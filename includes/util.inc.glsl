@@ -14,6 +14,10 @@ vec2 to_tc(vec2 uv, in vec2 res) {
     return uv;
 }
 
+bool tc_oob(vec2 tc) {
+    return tc.x < 0 || tc.x > 1 || tc.y < 0 || tc.y > 1;
+}
+
 vec2 to_0to1(in vec2 uv) {
     return to_tc(uv, iResolution);
 }

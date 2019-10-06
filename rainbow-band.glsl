@@ -6,6 +6,7 @@ out vec4 o;
 
 #pragma input vec3 img0 vec3(0)
 #pragma input float mix 0
+#pragma input float time 0
 
 #define BANDS 6
 #define COL_1 vec3(1.0, 0.0, 0.09411764705882353)
@@ -24,6 +25,6 @@ void main() {
     float lum = get_luminance(img);
 
     // We subtract epsilon so lum = 1 doesn't give us 6.
-    o.rgb = mix(img, cols[int(abs((lum + iTime) * BANDS)) % BANDS], input_mix());
+    o.rgb = mix(img, cols[int(abs((lum + input_time() * .5) * BANDS)) % BANDS], input_mix());
     o.a = 1;
 }
