@@ -10,14 +10,16 @@ out vec4 o;
 #pragma input vec3 img0
 #pragma input float tweak_1 0
 #pragma input float mix 0
+#pragma input vec2 center
 
 uniform float iTime;
 
 in vec2 uv;
+in vec2 max_uv;
 in vec2 tc;
 
 void main() {
-    vec2 p = uv;
+    vec2 p = uv - (input_center() * max_uv);
 
     float a = atan(p.y,p.x);
     float r = length(p);

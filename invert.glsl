@@ -3,7 +3,7 @@
 out vec4 o;
 
 #pragma input vec3 img0
-#pragma input float mix 0
+#pragma input vec3 mix vec3(1)
 
 #pragma include includes/ColorSpaces.inc.glsl
 

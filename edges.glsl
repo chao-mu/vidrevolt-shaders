@@ -6,6 +6,9 @@ out vec4 o;
 #pragma input vec2 noise vec2(0, 0)
 #pragma input float mix 1
 #pragma input bool negate false
+#pragma input float thresh 0
+
+#define SQRT_3 1.73205080757
 
 uniform float iTime;
 
@@ -50,6 +53,10 @@ void main() {
     vec3 a = applyKernel(KERNEL_SCHARR_X);
     vec3 b = applyKernel(KERNEL_SCHARR_Y);
 	vec3 edge = sqrt((a * a) + (b * b));
+
+    if (length(edge) < SQRT_3 * input_thresh()) {
+        edge = vec3(0);
+    }
 
     if (input_negate()) {
         edge = vec3(1) - edge;

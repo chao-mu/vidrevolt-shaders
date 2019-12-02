@@ -5,6 +5,8 @@ layout (location = 0) out vec4 o;
 #pragma input vec3 a
 #pragma input vec3 b
 #pragma input float mix_fade 0
+#pragma input float mix_fade2 0
+#pragma input float mix_fade3 0
 #pragma input float mix_bars 0
 #pragma input float mix_lumin_a 0
 #pragma input float mix_lumin_b 0
@@ -31,7 +33,7 @@ vec3 mix_bars(vec3 a, vec3 b, float m) {
     float x = tc.x * noise(tc.x * 10 + iTime);
     float n = noise(x * 10 - iTime);
 
-    return n > m ? a : b;
+    return n >= m ? a : b;
 }
 
 vec3 mix_lumin_a(vec3 a, vec3 b, float m) {
@@ -53,6 +55,8 @@ void main() {
 
     col = mix_lumin_a(a, b, input_mix_lumin_a());
     col = mix_lumin_b(b, col, input_mix_lumin_b());
+    col = mix(col, b, input_mix_fade2());
+    col = mix(col, b, input_mix_fade3());
     col = mix_bars(col, b, input_mix_bars());
     col = mix_diff(col, b, input_mix_diff());
     col = mix(col, b, input_mix_fade());

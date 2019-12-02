@@ -14,9 +14,7 @@ void main() {
     vec3 col = input_img0();
 
     vec3 hsv = rgb_to_hsv(col);
-    hsv.x = hsv.z;
-    hsv.y = hsv.z;
 
-    o.rgb = mix(col, hsv_to_rgb(hsv), input_mix());
+    o.rgb = mix(col, mix(col, col, -2), input_mix());
     o.a = 1;
 }
