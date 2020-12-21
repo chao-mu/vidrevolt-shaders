@@ -7,6 +7,13 @@ vec2 to_1to1(in vec2 uv) {
     return uv;
 }
 
+vec2 to_1to1(in vec2 uv, in vec2 res) {
+    uv -= .5;
+    uv.x *= res.x / res.y;
+
+    return uv;
+}
+
 vec2 to_tc(vec2 uv, in vec2 res) {
     uv.x /= res.x / res.y;
     uv += .5;

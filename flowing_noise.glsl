@@ -2,9 +2,10 @@
 
 out vec4 o;
 
-#pragma input float speed 0.3
-
 uniform float iTime;
+
+#pragma input float time iTime
+
 
 in vec2 uv;
 
@@ -13,13 +14,13 @@ float cnoise(vec2 p);
 void main() {
     vec2 st = uv;
 
-    float speed = input_speed();
+    float time = input_time();
 
     float amp = 0.9;
     float freq = 2.;
     float v = 0.;
     for (int i = 0; i < 2; i++) {
-        v += amp * cnoise(freq * st + cnoise(st + vec2(-iTime, iTime) * speed));
+        v += amp * cnoise(freq * st + cnoise(st + vec2(-time, time)));
         st *= 2.;
         amp *= .5;
     }

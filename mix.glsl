@@ -59,7 +59,7 @@ void main() {
     col = mix(col, b, input_mix_fade3());
     col = mix_bars(col, b, input_mix_bars());
     col = mix_diff(col, b, input_mix_diff());
-    col = mix(col, b, input_mix_fade());
+    col = mix(col, b, clamp(input_mix_fade(), 0, 1));
 
     o.rgb = col;
     o.a = 1;
