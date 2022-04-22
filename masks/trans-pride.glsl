@@ -47,7 +47,7 @@ mat2 rot(float a) {
     return mat2(cos(a), -sin(a), sin(a), cos(a));
 }
 
-#define ADD_SHAPE(dst, f) ##dst = min(dst, f)
+#define ADD_SHAPE(dst, f) dst = min(dst, f)
 
 float sdDownArrow(vec2 st, float stem, float legs) {
     vec2 from = vec2(0);

@@ -10,7 +10,7 @@ uniform float iTime;
 
 #define PI 3.1415926
 
-#define ADD_SHAPE(dst, f) ##dst = min(dst, f)
+#define ADD_SHAPE(dst, f) dst = min(dst, f)
 
 float sdCircle(vec2 st, float r) {
     return length(st) - r;

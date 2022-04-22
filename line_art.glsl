@@ -1,6 +1,6 @@
 #version 410
 
-layout (location = 0) out vec4 FragColor;
+layout (location = 0) out vec4 o;
 
 #pragma include util.inc
 
@@ -56,7 +56,7 @@ void main() {
     if (channel_negate()) {
         edge = vec3(1) - edge;
     }
-    
-    FragColor.rgb = mix(channel_img0(), edge, channel_mix());
-    FragColor.a = 1;
+
+    o.rgb = mix(channel_img0(), edge, channel_mix());
+    o.a = 1;
 }
